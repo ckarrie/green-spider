@@ -31,6 +31,8 @@ if __name__ == "__main__":
     parser.add_argument('--loglevel', help="error, warn, info, or debug (default: info)",
                         default='info')
 
+    parser.add_argument('--disable-screenshot-upload', dest='disable_screenshot_upload', action=argparse.BooleanOptionalAction)
+
     # subcommands
     subparsers = parser.add_subparsers(help='sub-command help', dest='command')
 
