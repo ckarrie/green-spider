@@ -181,9 +181,10 @@ class Checker(AbstractChecker):
         Used to upload screenshots and metadata to cloud storage and datastore.
         """
         # Upload screenshots and metadata
-
+        if self.config.disable_screenshot_upload:
+            logging.debug("load_in_browser post_hook 1 - Skipping Screenshot upload")
+            return result
         logging.debug("load_in_browser post_hook 1 - Creating client")
-
         storage_client = storage.Client.from_service_account_json(self.config.storage_credentials_path)
         bucket = storage_client.get_bucket(self.config.screenshot_bucket_name)
 
